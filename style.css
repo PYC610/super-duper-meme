@@ -1,0 +1,150 @@
+/* 基礎設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f3f7;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.resume-container {
+    display: flex;
+    max-width: 1050px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+}
+
+/* 側邊欄 */
+.sidebar {
+    width: 35%;
+    background-color: #1a3a5a;
+    color: #ffffff;
+    padding: 60px 30px;
+}
+
+/* 修正重點：側邊欄標題改回藍色 */
+.sidebar h3 {
+    color: #3498db; 
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-left: 4px solid #3498db; /* 加上左邊框裝飾更有質感 */
+    padding-left: 10px;
+}
+
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border: 4px solid #3498db;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.4s ease;
+}
+
+.profile-photo:hover { transform: scale(1.05); }
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar h1 { text-align: center; font-size: 1.8em; letter-spacing: 3px; margin-bottom: 5px; color: #fff; }
+.school-info { text-align: center; color: #3498db; font-size: 0.9em; font-weight: bold; margin-bottom: 40px; }
+
+/* QR Code 區域 */
+.qr-code-area {
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.qr-code-area img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border: 4px solid #fff;
+    border-radius: 5px;
+}
+
+/* 主內容區動畫 */
+.main-content {
+    width: 65%;
+    padding: 60px 50px;
+}
+
+.content-block {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.content-block:nth-child(1) { animation-delay: 0.2s; }
+.content-block:nth-child(2) { animation-delay: 0.4s; }
+.content-block:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 技能條動畫 */
+.skill-item { margin-bottom: 25px; }
+.skill-label { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 8px; }
+.bar-bg { background: #ecf0f1; height: 10px; border-radius: 5px; overflow: hidden; }
+
+.bar-fill {
+    background: linear-gradient(90deg, #1a3a5a, #3498db);
+    height: 100%;
+    width: 0;
+    animation: fillProgress 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fillProgress {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* 經歷圖片 */
+.exp-detail { display: flex; align-items: flex-start; margin-top: 15px; }
+.exp-img {
+    width: 200px;
+    border-radius: 8px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+.exp-img:hover { transform: scale(1.03); }
+
+/* 標籤與連結 */
+.section-title {
+    font-size: 1.4em;
+    color: #1a3a5a;
+    border-bottom: 3px solid #3498db;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.slogan-block blockquote {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #1a3a5a;
+    background: #f4f9ff;
+    padding: 20px;
+    border-left: 6px solid #1a3a5a;
+}
+
+.contact-section ul { list-style: none; }
+.contact-section a { color: #3498db; text-decoration: none; }
+.site-footer { text-align: center; color: #bbb; font-size: 0.8em; margin-top: 50px; }
