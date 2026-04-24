@@ -1,4 +1,4 @@
-/* 基礎設定 */
+/* 基本重置，先把內建的間距通通歸零 */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +12,7 @@ body {
     line-height: 1.6;
 }
 
+/* 履歷外殼：電腦版用 flex 左右排 */
 .resume-container {
     display: flex;
     max-width: 1050px;
@@ -21,7 +22,7 @@ body {
     min-height: 100vh;
 }
 
-/* 側邊欄 */
+/* --- 左側邊欄 --- */
 .sidebar {
     width: 35%;
     background-color: #1a3a5a;
@@ -29,12 +30,12 @@ body {
     padding: 60px 30px;
 }
 
-/* 修正重點：側邊欄標題改回藍色 */
+/* 側邊欄小標題：維持藍色字體與左裝飾線 */
 .sidebar h3 {
     color: #3498db; 
     margin-bottom: 15px;
     font-size: 1.2em;
-    border-left: 4px solid #3498db; /* 加上左邊框裝飾更有質感 */
+    border-left: 4px solid #3498db;
     padding-left: 10px;
 }
 
@@ -49,6 +50,7 @@ body {
     transition: transform 0.4s ease;
 }
 
+/* 滑鼠滑過去頭像會稍微放大 */
 .profile-photo:hover { transform: scale(1.05); }
 
 .profile-photo img {
@@ -60,7 +62,7 @@ body {
 .sidebar h1 { text-align: center; font-size: 1.8em; letter-spacing: 3px; margin-bottom: 5px; color: #fff; }
 .school-info { text-align: center; color: #3498db; font-size: 0.9em; font-weight: bold; margin-bottom: 40px; }
 
-/* QR Code 區域 */
+/* IG QR Code 的外框與排版 */
 .qr-code-area {
     margin-top: 30px;
     text-align: center;
@@ -77,12 +79,13 @@ body {
     border-radius: 5px;
 }
 
-/* 主內容區動畫 */
+/* --- 右側主內容 --- */
 .main-content {
     width: 65%;
     padding: 60px 50px;
 }
 
+/* 讓右邊區塊有一格一格浮起來的感覺 */
 .content-block {
     margin-bottom: 50px;
     opacity: 0;
@@ -90,6 +93,7 @@ body {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+/* 延遲動畫，讓區塊一個一個跑出來 */
 .content-block:nth-child(1) { animation-delay: 0.2s; }
 .content-block:nth-child(2) { animation-delay: 0.4s; }
 .content-block:nth-child(3) { animation-delay: 0.6s; }
@@ -98,7 +102,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 技能條動畫 */
+/* --- 技能條動畫 --- */
 .skill-item { margin-bottom: 25px; }
 .skill-label { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 8px; }
 .bar-bg { background: #ecf0f1; height: 10px; border-radius: 5px; overflow: hidden; }
@@ -116,7 +120,7 @@ body {
     to { width: var(--target-width); }
 }
 
-/* 經歷圖片 */
+/* --- 經歷照片排版 --- */
 .exp-detail { display: flex; align-items: flex-start; margin-top: 15px; }
 .exp-img {
     width: 200px;
@@ -126,7 +130,7 @@ body {
 }
 .exp-img:hover { transform: scale(1.03); }
 
-/* 標籤與連結 */
+/* --- 裝飾性標籤與連結 --- */
 .section-title {
     font-size: 1.4em;
     color: #1a3a5a;
@@ -148,3 +152,29 @@ body {
 .contact-section ul { list-style: none; }
 .contact-section a { color: #3498db; text-decoration: none; }
 .site-footer { text-align: center; color: #bbb; font-size: 0.8em; margin-top: 50px; }
+
+/* --- RWD 手機版優化區塊 (重要！) --- */
+@media (max-width: 768px) {
+    /* 手機上把左右排版改成上下排 */
+    .resume-container {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    /* 讓側邊欄跟主內容在手機上都佔滿寬度 */
+    .sidebar, .main-content {
+        width: 100%;
+        padding: 40px 25px;
+    }
+
+    /* 經歷的照片與文字在手機上也改成上下排，比較不擠 */
+    .exp-detail {
+        flex-direction: column;
+    }
+
+    .exp-img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
